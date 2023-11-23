@@ -1,8 +1,9 @@
 #pragma once
 #include "Engine/Log/Log.h"
-#include "Engine/Core/GameWorld.h"
+#include "GameWorld.h"
 
 namespace Engine {
+	class GameWorld;
 
 	class GameEngine
 	{
@@ -19,14 +20,19 @@ namespace Engine {
 
 		bool IsRunning();
 
-		inline static GameEngine* GetEngine() { return m_Instance; };
-		inline GameWorld& GetWorld() { return *m_World; }
+		static GameEngine* GetEngine() { return m_Instance; }
+
+		GameWorld& GetWorld() { return *m_World; }
+
 
 	private:
 		static GameEngine* m_Instance;
 
 		float m_PreviousTime = 0;
 		float m_Time = 0;
+
+		float m_FrameRate = 60.0f;
+		float m_FrameTime = 0.0f;
 
 		bool isRunning = false;
 
@@ -40,7 +46,7 @@ namespace Engine {
 		SDL_Gamepad* m_Controller;
 		SDL_JoystickID m_ID;
 
-		std::unique_ptr<GameWorld> m_World;
+		GameWorld* m_World;
 	};
 }
 

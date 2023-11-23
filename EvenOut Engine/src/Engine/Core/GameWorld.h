@@ -1,59 +1,80 @@
 #pragma once
 #include "epch.h"
 #include "Engine/Core/Object.h"
-#include "Engine/Core/Components.h"
+#include "Components.h"
+#include "Engine/Core/Component.h"
 #include "Engine/Log/Log.h"
 
 namespace Engine {
+	class Rigidbody2D;
+	class TransformComponent;
+
 	class GameWorld {
 	private:
-		std::vector<std::unique_ptr<Object>> m_ObjectsInScene;
+		std::vector<std::shared_ptr<Object>> m_ObjectsInScene;
+
+		b2Vec2 m_Gravity = b2Vec2(0.0f, -9.8f);
+		b2World* m_WorldLevel;
+
 	public:
 		GameWorld() {}
 
-		void Start() {
-			for (auto& object : m_ObjectsInScene) object->Start();
-		}
+		void Start();
 
-		void Update(float deltaTime) {
-			for (auto& object : m_ObjectsInScene) {
+		void Update(float deltaTime);
 
-				object->Update(deltaTime);
-				
-			}
-		}
+		void Draw();
 
-		void UpdateObjects(float deltaTime);
+		void Refresh();
 
-		void Draw() {
-
+/*
+		template<typename T>
+		std::vector<std::shared_ptr<Object>> FindObjectsOfType() {
+			std::vector<std::shared_ptr<Object>> returnArray;
 			for (auto& object : m_ObjectsInScene)
 			{
-				object->Draw();
+				if (object->HasComponent<Rigidbody2D>()) {
+					returnArray.push_back(object);
+				}
 			}
-			
-		}
 
-		void Refresh() {
-
-			m_ObjectsInScene.erase(std::remove_if(std::begin(m_ObjectsInScene), std::end(m_ObjectsInScene),
-				[](const std::unique_ptr<Object>& mObject)
-				{
-					return !mObject->IsActive();
-				}), std::end(m_ObjectsInScene));
-			
-		}
+			return returnArray;
+		}*/
 
 		template <typename T, typename... TArgs>
 		T* CreateActor(TArgs&& ...mArgs)
 		{
 			LOG_CORE("Created Actor", LOG_INFO);
 			T* obj(new T(std::forward<TArgs>(mArgs)...));
-			std::unique_ptr<Object> uPtr{ obj };
+			std::shared_ptr<Object> uPtr{ obj };
 			m_ObjectsInScene.emplace_back(std::move(uPtr));
-			//obj->AddComponent<TransformComponent>();
 
 			obj->Start();
+
+			if (uPtr->HasComponent<Rigidbody2D>())
+			{
+				auto& transform = uPtr->GetComponent<TransformComponent>();
+				auto& rigidBody = uPtr->GetComponent<Rigidbody2D>();
+
+				b2BodyDef bodyDef;
+
+				switch (rigidBody.Type) {
+				case Rigidbody2D::BodyType::Dynamic:
+					bodyDef.type = b2_dynamicBody;
+					break;
+				case Rigidbody2D::BodyType::Static:
+					bodyDef.type = b2_staticBody;
+					break;
+				case Rigidbody2D::BodyType::Kinematic:
+					bodyDef.type = b2_kinematicBody;
+					break;
+
+				}
+
+				bodyDef.position.Set(transform.Position.x, transform.Position.y);
+
+				b2Body* body = m_WorldLevel->CreateBody(&bodyDef);
+			}
 
 			return obj;
 		}

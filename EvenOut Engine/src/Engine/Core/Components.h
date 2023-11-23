@@ -3,6 +3,8 @@
 #include "Component.h"
 #include "Engine/Core/Object.h"
 #include "Engine/Core/Renderer.h"
+#include "Engine/Core/GameEngine.h"
+
 
 using namespace std::chrono_literals;
 
@@ -24,10 +26,10 @@ namespace Engine {
 
 		void Start() override
 		{
-			std::cout << "INIT trs" << std::endl;
+			
 		}
 
-		void Update(float deltaTime) override {
+		void UpdateComponent(float deltaTime) override {
 
 		}
 
@@ -39,6 +41,7 @@ namespace Engine {
 		void Translate(float x, float y) {
 			Position.x += x;
 			Position.y += y;
+
 		}
 
 	};
@@ -65,9 +68,9 @@ namespace Engine {
 
 		}
 
-		void Update(float deltaTime) override
+		void UpdateComponent(float deltaTime) override
 		{
-
+			
 		}
 
 		void DrawComponent() override
@@ -93,7 +96,7 @@ namespace Engine {
 		{
 		}
 
-		void Update(float deltaTime) override
+		void UpdateComponent(float deltaTime) override
 		{
 
 		}
@@ -231,28 +234,71 @@ namespace Engine {
 			m_SpriteTexture.t_PixelSize = SpritePixelSize;
 		}
 
-		void Start() override
+		void Start()
 		{
-			
+			if (m_Actor != nullptr) {
+				m_Transform = &m_Actor->GetComponent<TransformComponent>();
+			}
+			else {
+				LOG_CORE("SpriteRender2d : ACTOR IS NULLPOINTER* ", LOG_ERROR);
+			}
 		}
 
-		void Update(float deltaTime) override 
+		void UpdateComponent(float deltaTime)  
 		{
-			m_SpriteTexture.t_ScreenRect->x = transform->Position.x;
-			m_SpriteTexture.t_ScreenRect->y = transform->Position.y;
+			m_SpritePos.d_X = m_Transform->Position.x;
+			m_SpritePos.d_Y = m_Transform->Position.y;
+			m_SpriteTexture.LoadPositionRect(&m_SpritePos);
 		}
 
-		void DrawComponent() override
+		void DrawComponent()
 		{
 			Renderer::RenderTexture(m_SpriteTexture);
 		}
 
+		Object* m_Actor;
+
 		Texture2D m_SpriteTexture;
 		TextureData m_SpriteRect;
 		TextureData m_SpritePos;
-		TransformComponent* transform;
+		TransformComponent* m_Transform;
+
+	};
+
+	struct Rigidbody2D : public Component{
+		enum class BodyType { Static = 0, Dynamic, Kinematic };
+
+		BodyType Type = BodyType::Dynamic;
+		bool FixedRotation = false;
+
+		b2BodyDef m_bodyDef;
+		b2Body* m_Body;
+
+		void* RuntimeBody = nullptr;
 
 		Object* m_Actor;
+
+		Rigidbody2D() {};
+		Rigidbody2D(BodyType type) : Type(type){}
+		Rigidbody2D(const Rigidbody2D& other) = default;
+
+		void Start() override
+		{
+
+		}
+
+
+		void UpdateComponent(float deltaTime) override
+		{
+			
+		}
+
+
+		void DrawComponent() override
+		{
+			
+		}
+
 	};
 }
 

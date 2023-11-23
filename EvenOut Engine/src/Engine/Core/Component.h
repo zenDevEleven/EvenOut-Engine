@@ -34,7 +34,7 @@ namespace Engine {
 		virtual ~Component() {}
 
 		virtual void Start() {}
-		virtual void Update(float deltaTime) {}
+		virtual void UpdateComponent(float deltaTime) {}
 		virtual void DrawComponent() {}
 	};
 }

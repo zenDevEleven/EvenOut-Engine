@@ -1,6 +1,7 @@
 #include "epch.h"
 #include "GameEngine.h"
 #include "Renderer.h"
+#include "Input.h"
 
 namespace Engine {
 
@@ -25,16 +26,13 @@ namespace Engine {
 			LOG_CORE("SDL Initialized", LOG_INFO);
 		}
 
-		m_Window = SDL_CreateWindow(title,
-			(int)width,
-			(int)height,
-			0);
+		m_Window = SDL_CreateWindow(title, width, height, 0);
 
 
 		Renderer::Init(m_Window);
 
-		m_World = std::make_unique<GameWorld>();
-
+		m_World = new GameWorld();
+		
 		isRunning = true;
 	}
 
@@ -48,6 +46,7 @@ namespace Engine {
 				m_ID = m_GamepadEvent.gdevice.which;
 				m_Controller = SDL_OpenGamepad(m_GamepadEvent.gdevice.which);
 				LOG_CORE("Controller: " + std::string(SDL_GetGamepadInstanceName(m_GamepadEvent.gdevice.which)), LOG_INFO);
+				Input::SendGamepad(m_Controller);
 				break;
 			case SDL_EVENT_QUIT:
 				isRunning = false;
@@ -58,18 +57,25 @@ namespace Engine {
 
 	void GameEngine::Run()
 	{
-		m_PreviousTime = m_Time;
-		m_Time = SDL_GetTicks();
-		float deltaTime = (m_Time - m_PreviousTime) / 1000.0f;
-
 		while (isRunning) {
+			m_PreviousTime = m_Time;
+			m_Time = SDL_GetTicks();
+			float deltaTime = (m_Time - m_PreviousTime) / 1000.0f;
+			
+			m_FrameTime += deltaTime;
 
-			HandleEvents();
-			m_World->Refresh();
-			m_World->Update(deltaTime);
-			m_World->UpdateObjects(deltaTime);
+			if (m_FrameTime >= (1.0f / m_FrameRate))
+			{
+				HandleEvents();
+				m_World->Refresh();
+				m_World->Update(deltaTime);
+
+				m_FrameTime = 0.f;
+			}
 			Render();
 		}
+
+		Clean();
 	}
 
 	void GameEngine::Render()

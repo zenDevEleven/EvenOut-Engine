@@ -1,5 +1,6 @@
 #pragma once
 #include "Engine/Core/Component.h"
+#include "Engine/Log/Log.h"
 
 namespace Engine {
 	class Component;
@@ -31,9 +32,8 @@ namespace Engine {
 
 		virtual void Update(float deltaTime) 
 		{
-			std::cout << "actors TO CALL UPDATE:" << std::endl;
 			for (auto& c : m_Components) {
-				c->Update(deltaTime);
+				c->UpdateComponent(deltaTime);
 			}
 		}
 
@@ -49,7 +49,7 @@ namespace Engine {
 
 		template<typename T>
 		bool HasComponent() const{
-			return m_ComponentBitSet[GetComponentTypeID<T>];
+			return m_ComponentBitSet[GetComponentTypeID<T>()];
 		}
 
 		template<typename T, typename... TArgs>

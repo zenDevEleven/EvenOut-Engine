@@ -62,10 +62,10 @@
     <ClCompile Include="src\Engine\Core\Actor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\Core\GameWorld.cpp">
+    <ClCompile Include="src\Engine\Core\Input.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\Core\Input.cpp">
+    <ClCompile Include="src\Engine\Core\GameWorld.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -3,6 +3,9 @@
 #include "Engine/Core/Components.h"
 #include "Engine/Log/Log.h"
 
+class Engine::TransformComponent;
+class Engine::SpriteRenderer2D;
+
 class Background : public Engine::Object
 {
 

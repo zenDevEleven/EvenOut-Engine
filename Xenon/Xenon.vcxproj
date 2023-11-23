@@ -110,8 +110,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\x64\Debug;..\EvenOut Engine\vendor\SDL3\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL3.lib;EvenOut Engine.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\x64\Debug;..\EvenOut Engine\vendor\SDL3\Debug;..\EvenOut Engine\vendor\Box2d\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL3.lib;box2d.lib;EvenOut Engine.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\x64\Debug</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
@@ -141,6 +141,11 @@
     <ClInclude Include="src\Background.h" />
     <ClInclude Include="src\GameManager.h" />
     <ClInclude Include="src\Player.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EvenOut Engine\EvenOut Engine.vcxproj">
+      <Project>{0c9c46e5-7169-4922-b9a5-c960babff071}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
