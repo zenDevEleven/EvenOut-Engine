@@ -20,7 +20,7 @@ private:
 	Engine::TransformComponent* m_Transform;
 	Engine::SpriteRenderer2D* m_SpriteRenderer;
 	Engine::AnimatorComponent* m_Animator;
- //	Engine::Rigidbody2D* m_RigidBody2d;
+ 	Engine::Rigidbody2D* m_RigidBody2d;
 
 	float lastX = -2;
 
