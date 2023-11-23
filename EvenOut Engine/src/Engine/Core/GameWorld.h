@@ -3,7 +3,7 @@
 #include "Engine/Core/Object.h"
 #include "Components.h"
 #include "Engine/Core/Component.h"
-#include "Engine/Log/Log.h"
+#include "Engine/LogSystem/Log.h"
 
 namespace Engine {
 	class Rigidbody2D;

@@ -2,7 +2,7 @@
 #include "Engine/Core/Actor.h"
 #include "Engine/Core/GameWorld.h"
 #include "Engine/Core/GameEngine.h"
-#include "Engine/Log/Log.h"
+#include "Engine/LogSystem/Log.h"
 #include "Player.h"
 
 class GameManager : public Engine::Actor

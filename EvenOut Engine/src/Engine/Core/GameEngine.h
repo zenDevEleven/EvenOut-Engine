@@ -1,5 +1,5 @@
 #pragma once
-#include "Engine/Log/Log.h"
+#include "Engine/LogSystem/Log.h"
 #include "GameWorld.h"
 
 namespace Engine {

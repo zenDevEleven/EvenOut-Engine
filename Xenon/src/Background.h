@@ -1,7 +1,7 @@
 #pragma once
 #include "Engine/Core/Object.h"
 #include "Engine/Core/Components.h"
-#include "Engine/Log/Log.h"
+#include "Engine/LogSystem/Log.h"
 
 class Engine::TransformComponent;
 class Engine::SpriteRenderer2D;
