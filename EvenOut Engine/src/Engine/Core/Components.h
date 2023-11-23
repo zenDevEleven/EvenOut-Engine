@@ -1,11 +1,9 @@
 #pragma once
 #include "epch.h"
-#include "Component.h"
 #include "Engine/Core/Object.h"
+#include "Engine/Core/Component.h"
 #include "Engine/Core/Renderer.h"
 #include "Engine/Core/GameEngine.h"
-
-
 using namespace std::chrono_literals;
 
 namespace Engine {
@@ -14,8 +12,6 @@ namespace Engine {
 		glm::vec2 Position;
 		glm::vec3 Rotation;
 		glm::vec2 Scale;
-
-		Object* m_Actor;
 
 		TransformComponent() = default;
 		TransformComponent(const TransformComponent& other) = default;
@@ -55,8 +51,6 @@ namespace Engine {
 		float Friction = 0.5f;
 		float Restitution = 0.0f;
 		float RestitutionThreshold = 0.5f;
-
-		Object* m_Actor;
 
 		void* RuntimeFixture = nullptr;
 
@@ -150,7 +144,6 @@ namespace Engine {
 			}
 		}
 
-		Object* m_Actor;
 	private:
 		Animation& FindAnimation(std::string& name) {
 			for (Animation* a : m_Animations)
@@ -236,18 +229,13 @@ namespace Engine {
 
 		void Start()
 		{
-			if (m_Actor != nullptr) {
-				m_Transform = &m_Actor->GetComponent<TransformComponent>();
-			}
-			else {
-				LOG_CORE("SpriteRender2d : ACTOR IS NULLPOINTER* ", LOG_ERROR);
-			}
+			m_Transform = m_Actor->GetComponent<TransformComponent>();
 		}
 
 		void UpdateComponent(float deltaTime)  
 		{
-			m_SpritePos.d_X = m_Transform->Position.x;
-			m_SpritePos.d_Y = m_Transform->Position.y;
+			m_SpritePos.d_X = m_Transform.Position.x;
+			m_SpritePos.d_Y = m_Transform.Position.y;
 			m_SpriteTexture.LoadPositionRect(&m_SpritePos);
 		}
 
@@ -256,12 +244,10 @@ namespace Engine {
 			Renderer::RenderTexture(m_SpriteTexture);
 		}
 
-		Object* m_Actor;
-
 		Texture2D m_SpriteTexture;
 		TextureData m_SpriteRect;
 		TextureData m_SpritePos;
-		TransformComponent* m_Transform;
+		TransformComponent m_Transform;
 
 	};
 
@@ -276,15 +262,29 @@ namespace Engine {
 
 		void* RuntimeBody = nullptr;
 
-		Object* m_Actor;
-
 		Rigidbody2D() {};
 		Rigidbody2D(BodyType type) : Type(type){}
 		Rigidbody2D(const Rigidbody2D& other) = default;
 
 		void Start() override
 		{
+			/*auto& transform = m_Actor->GetComponent<TransformComponent>();
+			auto& rigidBody = m_Actor->GetComponent<Rigidbody2D>();
 
+			switch (rigidBody.Type) {
+			case BodyType::Dynamic:
+				m_bodyDef.type = b2_dynamicBody;
+				break;
+			case BodyType::Static:
+				m_bodyDef.type = b2_staticBody;
+				break;
+			case BodyType::Kinematic:
+				m_bodyDef.type = b2_kinematicBody;
+				break;
+
+			}
+
+			m_bodyDef.position.Set(transform.Position.x, transform.Position.y);*/
 		}
 
 

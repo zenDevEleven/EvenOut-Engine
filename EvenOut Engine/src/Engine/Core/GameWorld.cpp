@@ -5,13 +5,14 @@ namespace Engine
 {
 	void GameWorld::Start()
 	{
-		m_WorldLevel = new b2World(m_Gravity);
+		/*m_WorldLevel = new b2World(m_Gravity);*/
 		for (auto& object : m_ObjectsInScene) object->Start();
 	}
 
 	void GameWorld::Update(float deltaTime)
 	{
 		//physics
+/*
 		const int32_t velocityInterations = 6;
 		const int32_t positionInterations = 2;
 
@@ -25,7 +26,7 @@ namespace Engine
 			b2Body* body = (b2Body*)body2d.RuntimeBody;
 			const auto& position = body->GetPosition();
 			transform.Translate(position.x, position.y);
-		}
+		}*/
 
 		for (auto& object : m_ObjectsInScene) {
 

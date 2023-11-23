@@ -3,12 +3,6 @@
 #include "Engine/Core/Components.h"
 #include "Engine/Core/Component.h"
 #include "Engine/Core/Input.h"
-
-class Engine::Rigidbody2D;
-class Engine::TransformComponent;
-class Engine::SpriteRenderer2D;
-class Engine::AnimatorComponent;
-
 class Player : public Engine::Actor
 {
 public:
@@ -20,7 +14,7 @@ private:
 	Engine::TransformComponent* m_Transform;
 	Engine::SpriteRenderer2D* m_SpriteRenderer;
 	Engine::AnimatorComponent* m_Animator;
- 	Engine::Rigidbody2D* m_RigidBody2d;
+ 	//Engine::Rigidbody2D* m_RigidBody2d;
 
 	float lastX = -2;
 

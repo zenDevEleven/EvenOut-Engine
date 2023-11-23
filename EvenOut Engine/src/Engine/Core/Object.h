@@ -1,5 +1,6 @@
 #pragma once
 #include "Engine/Core/Component.h"
+#include "Engine/Core/GameWorld.h"
 #include "Engine/LogSystem/Log.h"
 
 namespace Engine {
@@ -14,6 +15,7 @@ namespace Engine {
 
 		ComponentArray m_ComponentArray;
 		ComponentBitSet m_ComponentBitSet;
+
 
 	public:
 

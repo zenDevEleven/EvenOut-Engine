@@ -4,7 +4,6 @@
 #include "Engine/Core/Object.h"
 
 namespace Engine {
-	class Object;
 	class Component;
 
 	using ComponentID = std::size_t;

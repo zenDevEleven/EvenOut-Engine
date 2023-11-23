@@ -7,7 +7,7 @@ Player::Player()
 	m_SpriteRenderer = &AddComponent<Engine::SpriteRenderer2D>("Assets/Textures/Ship1.bmp", 64);
 	m_Animator = &AddComponent<Engine::AnimatorComponent>(m_SpriteRenderer->m_SpriteTexture);
 	m_Animator = &AddComponent<Engine::AnimatorComponent>(m_SpriteRenderer->m_SpriteTexture);
-	m_RigidBody2d = &AddComponent<Engine::Rigidbody2D>();
+	//m_RigidBody2d = &AddComponent<Engine::Rigidbody2D>();
 }
 
 void Player::Start()
