@@ -1,7 +1,7 @@
 #include "epch.h"
 #include "GameEngine.h"
-#include "Renderer.h"
-#include "Input.h"
+#include "Engine/Core/GameWorld.h"
+#include "Engine/Core/PhysicsWorld.h"
 
 namespace Engine {
 
@@ -32,6 +32,8 @@ namespace Engine {
 		Renderer::Init(m_Window);
 
 		m_World = new GameWorld();
+		m_PhysicsWorld = new PhysicsWorld();
+		m_PhysicsWorld->SetWorld(m_World);
 		
 		isRunning = true;
 	}
@@ -69,6 +71,7 @@ namespace Engine {
 				HandleEvents();
 				m_World->Refresh();
 				m_World->Update(deltaTime);
+				m_PhysicsWorld->Update(deltaTime);
 
 				m_FrameTime = 0.f;
 			}

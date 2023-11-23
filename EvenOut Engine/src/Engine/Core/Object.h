@@ -1,50 +1,23 @@
 #pragma once
+#include "epch.h"
 #include "Engine/Core/Component.h"
-#include "Engine/Core/GameWorld.h"
 #include "Engine/LogSystem/Log.h"
 
 namespace Engine {
-	class Component;
 
 	class Object
 	{
-	private:
-		bool m_Active = true;
-
-		std::vector<std::unique_ptr<Component>> m_Components;
-
-		ComponentArray m_ComponentArray;
-		ComponentBitSet m_ComponentBitSet;
-
-
 	public:
 
 		Object() = default;
 
-		virtual ~Object() {
+		virtual ~Object() {}
 
-		}
+		virtual void Start();
 
-		virtual void Start() 
-		{
-			for (auto& c : m_Components) {
-				c->Start();
-			}
-		}
+		virtual void Update(float deltaTime);
 
-		virtual void Update(float deltaTime) 
-		{
-			for (auto& c : m_Components) {
-				c->UpdateComponent(deltaTime);
-			}
-		}
-
-		virtual void Draw()
-		{
-			for (auto& c : m_Components) {
-				c->DrawComponent();
-			}
-		}
+		virtual void Draw();
 
 		bool IsActive() const { return m_Active; }
 		void Destroy() { m_Active = false; }
@@ -78,7 +51,13 @@ namespace Engine {
 			return *static_cast<T*>(ptr);
 		}
 
+	private:
+		bool m_Active = true;
 
+		std::vector<std::unique_ptr<Component>> m_Components;
+
+		ComponentArray m_ComponentArray;
+		ComponentBitSet m_ComponentBitSet;
 	};
 }
 

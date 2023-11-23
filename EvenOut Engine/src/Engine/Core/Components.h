@@ -1,22 +1,21 @@
 #pragma once
 #include "epch.h"
-#include "Engine/Core/Object.h"
-#include "Engine/Core/Component.h"
+#include "Component.h"
+
 #include "Engine/Core/Renderer.h"
-#include "Engine/Core/GameEngine.h"
+#include "Engine/Core/PhysicsWorld.h"
+
 using namespace std::chrono_literals;
 
 namespace Engine {
 
 	struct TransformComponent : public Component{
 		glm::vec2 Position;
-		glm::vec3 Rotation;
-		glm::vec2 Scale;
 
 		TransformComponent() = default;
 		TransformComponent(const TransformComponent& other) = default;
-		TransformComponent(const glm::vec2& position, const glm::vec3& rotation, const glm::vec2& scale)
-			: Position(position), Rotation(rotation), Scale(scale)
+		TransformComponent(const glm::vec2& position)
+			: Position(position)
 		{
 		}
 
@@ -37,6 +36,7 @@ namespace Engine {
 		void Translate(float x, float y) {
 			Position.x += x;
 			Position.y += y;
+			std::cout << Position.x << " , " << Position.y << std::endl;
 
 		}
 
@@ -229,13 +229,13 @@ namespace Engine {
 
 		void Start()
 		{
-			m_Transform = m_Actor->GetComponent<TransformComponent>();
+			m_Transform = &m_Actor->GetComponent<TransformComponent>();
 		}
 
 		void UpdateComponent(float deltaTime)  
 		{
-			m_SpritePos.d_X = m_Transform.Position.x;
-			m_SpritePos.d_Y = m_Transform.Position.y;
+			m_SpritePos.d_X = m_Transform->Position.x;
+			m_SpritePos.d_Y = m_Transform->Position.y;
 			m_SpriteTexture.LoadPositionRect(&m_SpritePos);
 		}
 
@@ -247,7 +247,7 @@ namespace Engine {
 		Texture2D m_SpriteTexture;
 		TextureData m_SpriteRect;
 		TextureData m_SpritePos;
-		TransformComponent m_Transform;
+		TransformComponent* m_Transform;
 
 	};
 
@@ -268,7 +268,7 @@ namespace Engine {
 
 		void Start() override
 		{
-			/*auto& transform = m_Actor->GetComponent<TransformComponent>();
+			auto& transform = m_Actor->GetComponent<TransformComponent>();
 			auto& rigidBody = m_Actor->GetComponent<Rigidbody2D>();
 
 			switch (rigidBody.Type) {
@@ -279,12 +279,15 @@ namespace Engine {
 				m_bodyDef.type = b2_staticBody;
 				break;
 			case BodyType::Kinematic:
-				m_bodyDef.type = b2_kinematicBody;
+				m_bodyDef.type = b2_kinematicBody;	
 				break;
 
 			}
 
-			m_bodyDef.position.Set(transform.Position.x, transform.Position.y);*/
+			m_bodyDef.position.Set(transform.Position.x, transform.Position.y);
+
+			m_Body = PhysicsWorld::GetPhysicsWorld().CreateBody(m_bodyDef);
+			RuntimeBody = m_Body;
 		}
 
 

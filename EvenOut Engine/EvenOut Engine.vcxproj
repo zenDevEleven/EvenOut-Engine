@@ -107,7 +107,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)EvenOut Engine\vendor\SDL3\include;src;$(SolutionDir)EvenOut Engine\vendor\glm;$(SolutionDir)EvenOut Engine\vendor\Box2d\include;$(SolutionDir)EvenOut Engine\vendor\entt\include</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>epch.h</PrecompiledHeaderFile>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Engine\Core\PhysicsWorld.h" />
     <ClInclude Include="src\Engine\Core\Actor.h" />
     <ClInclude Include="src\Engine\Core\Component.h" />
     <ClInclude Include="src\Engine\Core\Components.h" />
@@ -151,6 +152,8 @@
     <ClInclude Include="src\epch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Engine\Core\Object.cpp" />
+    <ClCompile Include="src\Engine\Core\PhysicsWorld.cpp" />
     <ClCompile Include="src\Engine\Core\Actor.cpp" />
     <ClCompile Include="src\Engine\Core\GameEngine.cpp" />
     <ClCompile Include="src\Engine\Core\GameWorld.cpp" />

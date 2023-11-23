@@ -1,30 +1,26 @@
 #pragma once
 #include "Engine/Core/Object.h"
-#include "Engine/Core/Component.h"
-#include "Engine/Core/Components.h"
 #include "Engine/LogSystem/Log.h"
 
 namespace Engine {
-
+	
 	class GameWorld {
-	private:
+	protected:
 		std::vector<std::shared_ptr<Object>> m_ObjectsInScene;
-
-		//b2Vec2 m_Gravity = b2Vec2(0.0f, -9.8f);
-		//b2World* m_WorldLevel;
 
 	public:
 		GameWorld() {};
-
-		//b2World* GetPhysicsWorld() { return m_WorldLevel; }
 
 		void Start();
 
 		void Update(float deltaTime);
 
+
 		void Draw();
 
 		void Refresh();
+
+		std::vector<std::shared_ptr<Object>> GetObjects() { return m_ObjectsInScene; }
 
 /*
 		template<typename T>
@@ -46,6 +42,7 @@ namespace Engine {
 			LOG_CORE("Created Actor", LOG_INFO);
 			T* obj(new T(std::forward<TArgs>(mArgs)...));
 			std::shared_ptr<Object> uPtr{ obj };
+
 			m_ObjectsInScene.emplace_back(std::move(uPtr));
 
 			obj->Start();

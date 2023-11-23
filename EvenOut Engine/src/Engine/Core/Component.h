@@ -1,10 +1,19 @@
 #pragma once
 #include "epch.h"
-#include "Engine/Core/Component.h"
-#include "Engine/Core/Object.h"
 
 namespace Engine {
-	class Component;
+	class Object;
+
+	class Component {
+	public:
+		Object* m_Actor;
+		Component() {}
+		virtual ~Component() {}
+
+		virtual void Start() {}
+		virtual void UpdateComponent(float deltaTime) {}
+		virtual void DrawComponent() {}
+	};
 
 	using ComponentID = std::size_t;
 
@@ -26,14 +35,4 @@ namespace Engine {
 	using ComponentBitSet = std::bitset<maxComponents>;
 	using ComponentArray = std::array<Component*, maxComponents>;
 
-	class Component {
-	public:
-		Object* m_Actor;
-		Component() {}
-		virtual ~Component() {}
-
-		virtual void Start() {}
-		virtual void UpdateComponent(float deltaTime) {}
-		virtual void DrawComponent() {}
-	};
 }

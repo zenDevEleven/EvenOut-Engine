@@ -6,8 +6,7 @@ Player::Player()
 	m_Transform = &AddComponent<Engine::TransformComponent>();
 	m_SpriteRenderer = &AddComponent<Engine::SpriteRenderer2D>("Assets/Textures/Ship1.bmp", 64);
 	m_Animator = &AddComponent<Engine::AnimatorComponent>(m_SpriteRenderer->m_SpriteTexture);
-	m_Animator = &AddComponent<Engine::AnimatorComponent>(m_SpriteRenderer->m_SpriteTexture);
-	//m_RigidBody2d = &AddComponent<Engine::Rigidbody2D>();
+	m_RigidBody2d = &AddComponent<Engine::Rigidbody2D>(Engine::Rigidbody2D::BodyType::Dynamic);
 }
 
 void Player::Start()
@@ -69,5 +68,5 @@ void Player::Update(float deltaTime)
 			m_Animator->PlayAnimation("IdleFromLeft", 0.02, deltaTime, false);
 	}
 
-	m_Transform->Translate(XAxis * 7.0f, YAxis * 7.0f );
+	//m_Transform->Translate(XAxis * 7.0f, YAxis * 7.0f );
 }

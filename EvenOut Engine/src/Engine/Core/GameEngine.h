@@ -1,9 +1,12 @@
 #pragma once
+#include "Engine/Core/Renderer.h"
+#include "Engine/Core/Input.h"
+
 #include "Engine/LogSystem/Log.h"
-#include "GameWorld.h"
 
 namespace Engine {
 	class GameWorld;
+	class PhysicsWorld;
 
 	class GameEngine
 	{
@@ -47,6 +50,7 @@ namespace Engine {
 		SDL_JoystickID m_ID;
 
 		GameWorld* m_World;
+		PhysicsWorld* m_PhysicsWorld;
 	};
 }
 
