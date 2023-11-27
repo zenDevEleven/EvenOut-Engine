@@ -151,6 +151,81 @@
       <Project>{0c9c46e5-7169-4922-b9a5-c960babff071}</Project>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\Textures\bblogo.bmp" />
+    <Image Include="Assets\Textures\Blocks.bmp" />
+    <Image Include="Assets\Textures\bosseyes2.bmp" />
+    <Image Include="Assets\Textures\Burner1.bmp" />
+    <Image Include="Assets\Textures\Burner2.bmp" />
+    <Image Include="Assets\Textures\Burner3.bmp" />
+    <Image Include="Assets\Textures\Burner4.bmp" />
+    <Image Include="Assets\Textures\Burner5.bmp" />
+    <Image Include="Assets\Textures\Burner6.bmp" />
+    <Image Include="Assets\Textures\clone.bmp" />
+    <Image Include="Assets\Textures\clonejet.bmp" />
+    <Image Include="Assets\Textures\destroyable.bmp" />
+    <Image Include="Assets\Textures\drone.bmp" />
+    <Image Include="Assets\Textures\EnWeap6.bmp" />
+    <Image Include="Assets\Textures\explode16.bmp" />
+    <Image Include="Assets\Textures\explode32.bmp" />
+    <Image Include="Assets\Textures\explode64.bmp" />
+    <Image Include="Assets\Textures\font16x16.bmp" />
+    <Image Include="Assets\Textures\Font8x8.bmp" />
+    <Image Include="Assets\Textures\galaxy2.bmp" />
+    <Image Include="Assets\Textures\GAster32.bmp" />
+    <Image Include="Assets\Textures\GAster64.bmp" />
+    <Image Include="Assets\Textures\GAster96.bmp" />
+    <Image Include="Assets\Textures\GDust.bmp" />
+    <Image Include="Assets\Textures\GShoot.bmp" />
+    <Image Include="Assets\Textures\hmissile.bmp" />
+    <Image Include="Assets\Textures\Homing.bmp" />
+    <Image Include="Assets\Textures\HomProjc.bmp" />
+    <Image Include="Assets\Textures\logo.bmp" />
+    <Image Include="Assets\Textures\LonerA.bmp" />
+    <Image Include="Assets\Textures\LonerB.bmp" />
+    <Image Include="Assets\Textures\LonerC.bmp" />
+    <Image Include="Assets\Textures\MAster32.bmp" />
+    <Image Include="Assets\Textures\MAster64.bmp" />
+    <Image Include="Assets\Textures\MAster96.bmp" />
+    <Image Include="Assets\Textures\MDust.bmp" />
+    <Image Include="Assets\Textures\missile.bmp" />
+    <Image Include="Assets\Textures\pcflogo.bmp" />
+    <Image Include="Assets\Textures\PCFlogo1.bmp" />
+    <Image Include="Assets\Textures\PCFlogo2.bmp" />
+    <Image Include="Assets\Textures\playerjet.bmp" />
+    <Image Include="Assets\Textures\pod.bmp" />
+    <Image Include="Assets\Textures\PUDive.bmp" />
+    <Image Include="Assets\Textures\PUInvuln.bmp" />
+    <Image Include="Assets\Textures\PULaser.bmp" />
+    <Image Include="Assets\Textures\PULife.bmp" />
+    <Image Include="Assets\Textures\PUMissil.bmp" />
+    <Image Include="Assets\Textures\PUScore.bmp" />
+    <Image Include="Assets\Textures\PUShield.bmp" />
+    <Image Include="Assets\Textures\PUSpeed.bmp" />
+    <Image Include="Assets\Textures\PUWeapon.bmp" />
+    <Image Include="Assets\Textures\retros.bmp" />
+    <Image Include="Assets\Textures\rocks.bmp" />
+    <Image Include="Assets\Textures\rocks_2.bmp" />
+    <Image Include="Assets\Textures\rusher.bmp" />
+    <Image Include="Assets\Textures\SAster32.bmp" />
+    <Image Include="Assets\Textures\SAster64.bmp" />
+    <Image Include="Assets\Textures\SAster96.bmp" />
+    <Image Include="Assets\Textures\SDust.bmp" />
+    <Image Include="Assets\Textures\Ship1.bmp" />
+    <Image Include="Assets\Textures\Ship2.bmp" />
+    <Image Include="Assets\Textures\smoke.bmp" />
+    <Image Include="Assets\Textures\spinners.bmp" />
+    <Image Include="Assets\Textures\SporesA.bmp" />
+    <Image Include="Assets\Textures\SporesB.bmp" />
+    <Image Include="Assets\Textures\SporesC.bmp" />
+    <Image Include="Assets\Textures\SporesD.bmp" />
+    <Image Include="Assets\Textures\wallhugger.bmp" />
+    <Image Include="Assets\Textures\Wingtip.bmp" />
+    <Image Include="Assets\Textures\Xlogo.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Textures\Thumbs.db" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
