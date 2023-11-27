@@ -26,7 +26,7 @@ namespace Engine {
 
 				b2Body* body = (b2Body*)body2d.RuntimeBody;
 				const auto& position = body->GetPosition();
-				transform.Translate(position.x, position.y);
+				transform.Translate(position.x * 100, position.y * 100);
 			}
 		}
 	}

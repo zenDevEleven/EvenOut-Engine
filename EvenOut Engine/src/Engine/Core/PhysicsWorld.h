@@ -24,7 +24,7 @@ namespace Engine {
 
 		GameWorld* m_World;
 
-		b2Vec2 m_Gravity = b2Vec2(0.0f, 9.8f);
+		b2Vec2 m_Gravity = b2Vec2(0.0f, -9.8f);
 		b2World* m_WorldLevel;
 	};
 }

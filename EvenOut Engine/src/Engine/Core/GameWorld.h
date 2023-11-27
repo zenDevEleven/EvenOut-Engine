@@ -10,6 +10,7 @@ namespace Engine {
 
 	public:
 		GameWorld() {};
+		virtual ~GameWorld() { std::cout << "Destroyed!" << std::endl; };
 
 		void Start();
 

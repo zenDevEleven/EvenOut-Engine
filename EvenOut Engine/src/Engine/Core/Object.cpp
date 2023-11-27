@@ -2,11 +2,11 @@
 #include "Object.h"
 
 namespace Engine {
+
 	void Object::Start()
 	{
-		for (auto& c : m_Components) {
-			c->Start();
-		}
+		
+
 	}
 
 	void Object::Update(float deltaTime)

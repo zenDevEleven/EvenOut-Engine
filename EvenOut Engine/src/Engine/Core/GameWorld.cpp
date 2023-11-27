@@ -10,10 +10,9 @@ namespace Engine
 
 	void GameWorld::Update(float deltaTime)
 	{
-		for (auto& object : m_ObjectsInScene) {
-
+		for (auto& object : m_ObjectsInScene) 
+		{
 			object->Update(deltaTime);
-
 		}
 	}
 

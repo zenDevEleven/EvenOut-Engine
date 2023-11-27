@@ -34,11 +34,15 @@ namespace Engine {
 		}
 
 		void Translate(float x, float y) {
-			Position.x += x;
-			Position.y += y;
-			std::cout << Position.x << " , " << Position.y << std::endl;
-
+			Position.x = x;
+			Position.y = y;
 		}
+
+		void AddPos(float x, float y) {
+ 			Position.x += x;
+			Position.y += y;
+		}
+
 
 	};
 
@@ -226,6 +230,20 @@ namespace Engine {
 			m_SpriteTexture = Texture2D(filepath, m_SpriteRect, m_SpritePos);
 			m_SpriteTexture.t_PixelSize = SpritePixelSize;
 		}
+		SpriteRenderer2D(const char* filepath, int SpritePixelSize, int scale)
+		{
+			m_SpriteRect = TextureData(0.0f, 0.0f, SpritePixelSize, SpritePixelSize);
+			m_SpritePos = TextureData(0.0f, 0.0f, SpritePixelSize * scale, SpritePixelSize * scale);
+			m_SpriteTexture = Texture2D(filepath, m_SpriteRect, m_SpritePos);
+			m_SpriteTexture.t_PixelSize = SpritePixelSize;
+		}
+		SpriteRenderer2D(const char* filepath, glm::vec2 size)
+		{
+			m_SpriteRect = TextureData(0.0f, 0.0f, size.x, size.y);
+			m_SpritePos = TextureData(0.0f, 0.0f, size.x, size.y);
+			m_SpriteTexture = Texture2D(filepath, m_SpriteRect, m_SpritePos);
+			m_SpriteTexture.t_Size = size;
+		}
 
 		void Start()
 		{
@@ -262,11 +280,12 @@ namespace Engine {
 
 		void* RuntimeBody = nullptr;
 
-		Rigidbody2D() {};
+		Rigidbody2D() {}
+
 		Rigidbody2D(BodyType type) : Type(type){}
 		Rigidbody2D(const Rigidbody2D& other) = default;
 
-		void Start() override
+		void Start() override 
 		{
 			auto& transform = m_Actor->GetComponent<TransformComponent>();
 			auto& rigidBody = m_Actor->GetComponent<Rigidbody2D>();
@@ -279,17 +298,16 @@ namespace Engine {
 				m_bodyDef.type = b2_staticBody;
 				break;
 			case BodyType::Kinematic:
-				m_bodyDef.type = b2_kinematicBody;	
+				m_bodyDef.type = b2_kinematicBody;
 				break;
 
 			}
 
-			m_bodyDef.position.Set(transform.Position.x, transform.Position.y);
+			m_bodyDef.position.Set(transform.Position.x / 100, transform.Position.y / 100);
 
 			m_Body = PhysicsWorld::GetPhysicsWorld().CreateBody(m_bodyDef);
 			RuntimeBody = m_Body;
 		}
-
 
 		void UpdateComponent(float deltaTime) override
 		{

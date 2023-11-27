@@ -132,12 +132,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\ParallaxBG.cpp" />
+    <ClCompile Include="src\Missile.cpp" />
     <ClCompile Include="src\Background.cpp" />
     <ClCompile Include="src\GameManager.cpp" />
     <ClCompile Include="src\Player.cpp" />
     <ClCompile Include="src\XenonMain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\ParallaxBG.h" />
+    <ClInclude Include="src\Missile.h" />
     <ClInclude Include="src\Background.h" />
     <ClInclude Include="src\GameManager.h" />
     <ClInclude Include="src\Player.h" />

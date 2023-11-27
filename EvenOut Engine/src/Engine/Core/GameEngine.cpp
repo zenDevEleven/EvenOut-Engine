@@ -71,10 +71,11 @@ namespace Engine {
 				HandleEvents();
 				m_World->Refresh();
 				m_World->Update(deltaTime);
-				m_PhysicsWorld->Update(deltaTime);
 
 				m_FrameTime = 0.f;
 			}
+
+			m_PhysicsWorld->Update(deltaTime);
 			Render();
 		}
 

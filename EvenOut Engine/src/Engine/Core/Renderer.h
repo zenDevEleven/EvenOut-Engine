@@ -99,6 +99,7 @@ namespace Engine
 		SDL_FRect* t_ScreenPosition;
 		SDL_FRect* t_ScreenRect;
 		int t_PixelSize;
+		glm::vec2 t_Size;
 
 		operator SDL_Texture* () const { return t_Texture; }
 		operator const SDL_Texture* () const { return t_Texture; }

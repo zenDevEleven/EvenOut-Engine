@@ -5,7 +5,7 @@
 int main(int argc, char** argv) {
 	Engine::GameEngine engine;
 
-	engine.Initialize("EventOut Engine", 1280, 720);
+	engine.Initialize("EventOut Engine", 640, 480);
 
 	engine.GetWorld().CreateActor<GameManager>();
 		
