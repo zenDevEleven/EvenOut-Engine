@@ -17,4 +17,15 @@ namespace Engine {
 	{
 		__super::Update(deltaTime);
 	}
+
+	void Actor::OnContactEvent(Object* other)
+	{
+		__super::OnContactEvent(other);
+	}
+
+	void Actor::OnEndContactEvent(Object* other)
+	{
+		__super::OnEndContactEvent(other);
+	}
+
 }

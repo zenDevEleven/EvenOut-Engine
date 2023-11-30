@@ -52,6 +52,9 @@ namespace Engine
 		{
 			t_Texture = Renderer::LoadTexture(filepath);
 
+			SDL_QueryTexture(t_Texture, NULL, nullptr, &t_TextWidth, &t_TextHeight);
+
+
 			t_ScreenPosition = new SDL_FRect();
 			t_ScreenRect = new SDL_FRect();
 
@@ -69,6 +72,8 @@ namespace Engine
 		Texture2D(std::string filepath)
 		{
 			t_Texture = Renderer::LoadTexture(filepath);
+
+			SDL_QueryTexture(t_Texture, NULL, nullptr, &t_TextWidth, &t_TextHeight);
 
 			t_ScreenRect = 0;
 			t_ScreenPosition = 0;
@@ -100,6 +105,8 @@ namespace Engine
 		SDL_FRect* t_ScreenRect;
 		int t_PixelSize;
 		glm::vec2 t_Size;
+		int t_TextHeight;
+		int t_TextWidth;
 
 		operator SDL_Texture* () const { return t_Texture; }
 		operator const SDL_Texture* () const { return t_Texture; }

@@ -19,8 +19,25 @@ namespace Engine {
 
 		virtual void Draw();
 
+		virtual void OnContactEvent(Object* other) {};
+		virtual void OnEndContactEvent(Object* other) {};
+
+		void AddTag(const std::string& tag) {
+			Tag = tag;
+		}
+
+		std::string GetTag() const {
+			return Tag;
+		}
+
+		bool HasTag(const std::string& tag){
+			if (tag == Tag)
+				return true;
+
+			return false;
+		}
+
 		bool IsActive() const { return m_Active; }
-		void Destroy() { m_Active = false; }
 
 		template<typename T>
 		bool HasComponent() const{
@@ -51,8 +68,13 @@ namespace Engine {
 			return *static_cast<T*>(ptr);
 		}
 
+		void Destroy()
+		{
+			m_Active = false;
+		}
 	private:
 		bool m_Active = true;
+		std::string Tag = "Default";
 
 		std::vector<std::unique_ptr<Component>> m_Components;
 

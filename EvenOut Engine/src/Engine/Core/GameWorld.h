@@ -3,8 +3,18 @@
 #include "Engine/LogSystem/Log.h"
 
 namespace Engine {
-	
-	class GameWorld {
+
+	struct SortingLayer {
+		SortingLayer(std::shared_ptr<Object> p, int l) : obj(p), layer(l) {}
+		~SortingLayer() {};
+
+		std::shared_ptr<Object> obj;
+		int layer;
+	};
+
+	class GameWorld{
+	private:
+		std::vector<SortingLayer> layers;
 	protected:
 		std::vector<std::shared_ptr<Object>> m_ObjectsInScene;
 
@@ -40,8 +50,8 @@ namespace Engine {
 		template <typename T, typename... TArgs>
 		T* CreateActor(TArgs&& ...mArgs)
 		{
-			LOG_CORE("Created Actor", LOG_INFO);
 			T* obj(new T(std::forward<TArgs>(mArgs)...));
+			LOG_CORE("Created Actor" + obj->GetTag() , LOG_INFO);
 			std::shared_ptr<Object> uPtr{ obj };
 
 			m_ObjectsInScene.emplace_back(std::move(uPtr));
@@ -50,6 +60,7 @@ namespace Engine {
 
 			return obj;
 		}
+
 
 	};
 }

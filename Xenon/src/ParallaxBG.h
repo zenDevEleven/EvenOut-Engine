@@ -11,10 +11,18 @@ public:
 
 	void Update(float deltaTime) override;
 
-private:
-	float m_ScollingSpeed = 20.0f;
 
-	Engine::SpriteRenderer2D* m_SpriteRenderer;
+	void OnContactEvent(Object* other) override;
+
+
+	void OnEndContactEvent(Object* other) override;
+
+private:
+	float m_ScollingSpeed = 30.0f;
+
+	std::vector<Engine::SpriteRenderer2D*> m_SpriteRenderers;
+	int m_SpriteRendererIndex = 0;
+
 	Engine::TransformComponent* m_Transform;
 };
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -132,6 +132,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\PowerUp.cpp" />
+    <ClCompile Include="src\DestructionParticle.cpp" />
+    <ClCompile Include="src\BigAsteroid.cpp" />
+    <ClCompile Include="src\MediumAsteroid.cpp" />
+    <ClCompile Include="src\SmallAsteroid.cpp" />
+    <ClCompile Include="src\EnemyManager.cpp" />
+    <ClCompile Include="src\EnemyDrone.cpp" />
     <ClCompile Include="src\ParallaxBG.cpp" />
     <ClCompile Include="src\Missile.cpp" />
     <ClCompile Include="src\Background.cpp" />
@@ -140,6 +147,14 @@
     <ClCompile Include="src\XenonMain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\PowerUp.h" />
+    <ClInclude Include="src\DestructionParticle.h" />
+    <ClInclude Include="src\BigAsteroid.h" />
+    <ClInclude Include="src\MediumAsteroid.h" />
+    <ClInclude Include="src\SmallAsteroid.h" />
+    <ClInclude Include="src\EnemyManager.h" />
+    <ClInclude Include="src\EnemyDrone.h" />
+    <ClInclude Include="src\Global.h" />
     <ClInclude Include="src\ParallaxBG.h" />
     <ClInclude Include="src\Missile.h" />
     <ClInclude Include="src\Background.h" />

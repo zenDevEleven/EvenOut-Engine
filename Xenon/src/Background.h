@@ -12,6 +12,12 @@ public:
 	void Start() override;
 	void Update(float deltaTime) override;
 
+
+	void OnContactEvent(Object* other) override;
+
+
+	void OnEndContactEvent(Object* other) override;
+
 private:
 	Engine::Texture2D bacgroundTexture;
 	Engine::SpriteRenderer2D m_SpriteRenderer;

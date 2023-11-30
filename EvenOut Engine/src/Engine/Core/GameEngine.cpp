@@ -34,8 +34,7 @@ namespace Engine {
 		m_World = new GameWorld();
 		m_PhysicsWorld = new PhysicsWorld();
 		m_PhysicsWorld->SetWorld(m_World);
-		
-		isRunning = true;
+	
 	}
 
 	void GameEngine::HandleEvents()
@@ -59,23 +58,19 @@ namespace Engine {
 
 	void GameEngine::Run()
 	{
+		isRunning = true;
 		while (isRunning) {
-			m_PreviousTime = m_Time;
-			m_Time = SDL_GetTicks();
+			m_Time = (float)SDL_GetTicks();
 			float deltaTime = (m_Time - m_PreviousTime) / 1000.0f;
+			m_PreviousTime = m_Time;
 			
 			m_FrameTime += deltaTime;
 
-			if (m_FrameTime >= (1.0f / m_FrameRate))
-			{
-				HandleEvents();
-				m_World->Refresh();
-				m_World->Update(deltaTime);
-
-				m_FrameTime = 0.f;
-			}
-
+			HandleEvents();
+			m_World->Refresh();
 			m_PhysicsWorld->Update(deltaTime);
+			m_World->Update(deltaTime);
+
 			Render();
 		}
 

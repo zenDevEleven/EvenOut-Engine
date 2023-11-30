@@ -9,7 +9,12 @@ namespace Engine {
 		virtual ~Actor();
 
 
-		virtual void Start() = 0;
-		virtual void Update(float deltaTime) = 0;
+		virtual void Start();
+		virtual void Update(float deltaTime);
+
+		virtual void OnContactEvent(Object* other);
+
+		virtual void OnEndContactEvent(Object* other);
+
 	};
 }
