@@ -58,7 +58,7 @@ namespace Engine {
 			m_ComponentArray[GetComponentTypeID<T>()] = component;
 			m_ComponentBitSet[GetComponentTypeID<T>()] = true;
 
-			component->Start();
+			component->Start() 
 			return *component;
 		}
 
