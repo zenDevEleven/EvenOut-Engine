@@ -33,20 +33,6 @@ namespace Engine {
 
 		std::vector<std::shared_ptr<Object>> GetObjects() { return m_ObjectsInScene; }
 
-/*
-		template<typename T>
-		std::vector<std::shared_ptr<Object>> FindObjectsOfType() {
-			std::vector<std::shared_ptr<Object>> returnArray;
-			for (auto& object : m_ObjectsInScene)
-			{
-				if (object->HasComponent<Rigidbody2D>()) {
-					returnArray.push_back(object);
-				}
-			}
-
-			return returnArray;
-		}*/
-
 		template <typename T, typename... TArgs>
 		T* CreateActor(TArgs&& ...mArgs)
 		{

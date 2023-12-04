@@ -26,7 +26,7 @@ private:
 	float m_VelocityX = 50.0f;
 	float m_VelocityY = 20.0f;
 
-	float m_XThreshold = 3000.0f;
+	float m_XThreshold = 2000.0f;
 
 	Engine::TransformComponent* m_Transform;
 	Engine::SpriteRenderer2D* m_SpriteRenderer;

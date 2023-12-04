@@ -2,6 +2,7 @@
 #include "Missile.h"
 #include "GameManager.h"
 #include "Engine/LogSystem/Log.h"
+#include "Engine/Core/InputCodes.h"
 
 using Frame = Engine::AnimatorComponent::AnimationFrame;
 
@@ -55,14 +56,14 @@ void Player::Start()
 	}));
 }
 
-void Player::Update(float deltaTime)
+void Player::Update(float deltaTime)	
 {
 	__super::Update(deltaTime);
 
 	m_CurrentTime += deltaTime;
 
-	float XAxis = Engine::Input::GetGamepadAxis(SDL_GAMEPAD_AXIS_LEFTX);
-	float YAxis = Engine::Input::GetGamepadAxis(SDL_GAMEPAD_AXIS_LEFTY);
+	float XAxis = Engine::Input::GetGamepadAxis(ENGINE_INPUT_GAMEPAD_AXIS_LEFTX);
+	float YAxis = Engine::Input::GetGamepadAxis(ENGINE_INPUT_GAMEPAD_AXIS_LEFTY);
 
 	if (XAxis > 0) {
 		m_Animator->PlayAnimation("SpaceshipRight", 0.06, deltaTime, true);
@@ -79,7 +80,7 @@ void Player::Update(float deltaTime)
 			m_Animator->PlayAnimation("IdleFromLeft", 0.06, deltaTime, true);
 	}
 
-	if (Engine::Input::IsGamepadButtonPressed(SDL_GAMEPAD_BUTTON_NORTH, false)) {
+	if (Engine::Input::IsGamepadButtonPressed(ENGINE_INPUT_GAMEPAD_BUTTON_NORTH, false)) {
 		if (m_NexShotTime < m_CurrentTime) {
 			m_NexShotTime = m_CurrentTime + m_FireRate;
 			GameManager::GetManager().InstantiateObject<Missile>(700.0f, glm::vec2(m_Transform->Position.x + 16, m_Transform->Position.y + 16), m_MissileTier);

@@ -20,7 +20,7 @@ void GameManager::Start()
 	m_World.CreateActor<ParallaxBG>();
 
 	m_World.CreateActor<EnemyManager>();
-	m_World.CreateActor<PowerUp>(PowerUpType::MISSILE_PU, glm::vec2(200.0f, 200.0f));
+	m_World.CreateActor<PowerUp>(PowerUpType::MISSILE_PU, glm::vec2(400.0f, -200.f));
 
 
 	player = m_World.CreateActor<Player>();

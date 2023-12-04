@@ -148,6 +148,7 @@
     <ClInclude Include="src\Engine\Core\Input.h" />
     <ClInclude Include="src\Engine\Core\Object.h" />
     <ClInclude Include="src\Engine\Core\Renderer.h" />
+    <ClInclude Include="src\Engine\Core\InputCodes.h" />
     <ClInclude Include="src\Engine\LogSystem\Log.h" />
     <ClInclude Include="src\epch.h" />
     <ClInclude Include="vendor\Box2d\include\box2d\b2_api.h" />

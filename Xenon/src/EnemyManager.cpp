@@ -27,7 +27,10 @@ glm::vec2 FindRandomSpawnLocation()
 void EnemyManager::Start()
 {
 	m_instance = this;
-	SpawnAsteroids("Assets/Textures/SAster96.bmp", 2, 20.0f, 640.0f, -70.0f, -60.0f, AsteroidsSize::LARGE);
+	float Width = (float)Global::WIDTH;
+	float Height = (float)Global::HEIGHT;
+
+	SpawnAsteroids("Assets/Textures/SAster96.bmp", 2, 96.0f, 640.0f - 96.0f, -480.0f, -480.0f + 96.0f, AsteroidsSize::LARGE);
 }
 
 void EnemyManager::Update(float deltaTime)
