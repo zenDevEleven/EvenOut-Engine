@@ -13,25 +13,7 @@ project "EvenOut Engine"
 	location "Engine"
 	kind "StaticLib"
 	language "C++"
-
-	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
-
-	pchheader "epch.h"
-	pchsource "Engine/src/epch.cpp"
-
-	files{
-		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
-	}
-
-	includedirs{
-		"%{prj.name}/src",
-		"%{prj.name}/vendor/glm",
-		"%{prj.name}/vendor/Box2d/include",
-		"%{prj.name}/vendor/SDL3/include"
-	}
-
+	
 	filter "system:windows"
 		cppdialect "C++latest"
 		staticruntime "On"
@@ -40,18 +22,6 @@ project "EvenOut Engine"
 		postbuildcommands{
 			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Xenon")
 		}
-
-	filter "configurations:Debug"
-		defines "ENGINE_DEBUG"
-		symbols "On"
-
-	filter "configurations:Release"
-		defines "ENGINE_RELEASE"
-		optimize "On"
-
-	filter "configurations:Dist"
-		defines "ENGINE_DIST"
-		optimize "On"
 
 project "Xenon"
 	location "Xenon"
@@ -65,27 +35,8 @@ project "Xenon"
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp"
 	}
-
-	includedirs{
-		"EvenOut Engine/vendor/glm",
-		"EvenOut Engine/vendor/Box2d/include",
-		"EvenOut Engine/vendor/SDL3/include",
-		"EvenOut Engine/src"
-	}
-
+	
 	filter "system:windows"
 		cppdialect "C++latest"
 		staticruntime "On"
 		systemversion "latest"
-
-	filter "configurations:Debug"
-		defines "ENGINE_DEBUG"
-		symbols "On"
-
-	filter "configurations:Release"
-		defines "ENGINE_RELEASE"
-		optimize "On"
-
-	filter "configurations:Dist"
-		defines "ENGINE_DIST"
-		optimize "On"
