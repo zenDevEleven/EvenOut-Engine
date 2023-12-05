@@ -67,10 +67,10 @@ project "Xenon"
 	}
 
 	includedirs{
-		"Engine/vendor/glm",
-		"Engine/vendor/Box2d/include",
-		"Engine/vendor/SDL3/include",
-		"Engine/src"
+		"EvenOut Engine/vendor/glm",
+		"EvenOut Engine/vendor/Box2d/include",
+		"EvenOut Engine/vendor/SDL3/include",
+		"EvenOut Engine/src"
 	}
 
 	filter "system:windows"
