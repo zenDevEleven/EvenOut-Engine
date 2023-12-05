@@ -33,7 +33,7 @@ project "EvenOut Engine"
 	}
 
 	filter "system:windows"
-		cppdialect "C++20"
+		cppdialect "C++latest"
 		staticruntime "On"
 		systemversion "latest"
 
@@ -73,12 +73,8 @@ project "Xenon"
 		"Engine/src"
 	}
 
-	links{
-		"Zeny"
-	}
-
 	filter "system:windows"
-		cppdialect "C++20"
+		cppdialect "C++latest"
 		staticruntime "On"
 		systemversion "latest"
 
