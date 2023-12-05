@@ -1,7 +1,6 @@
 # EvenOut Engine
 
 Compile the Engine:
-1. Go to the folder directory and run the GenerateProjectFiles.bat
 1. Open Game EvenOut Engine.sln
 2. Select Xenon as the start project
 3. Build EvenOut Engine project
