@@ -28,7 +28,7 @@ project "EvenOut Engine"
 	includedirs{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/glm",
-		"%{prj.name}/vendor/Box2d/include"
+		"%{prj.name}/vendor/Box2d/include",
 		"%{prj.name}/vendor/SDL3/include"
 	}
 
